@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "DnDCharacterBuilder.Domain/1.0.0": {
+        "dependencies": {
+          "DnDCharacterBuilder.Common": "1.0.0"
+        },
+        "runtime": {
+          "DnDCharacterBuilder.Domain.dll": {}
+        }
+      },
+      "DnDCharacterBuilder.Common/1.0.0": {
+        "runtime": {
+          "DnDCharacterBuilder.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DnDCharacterBuilder.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DnDCharacterBuilder.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,4 +1,65 @@
 ﻿<!DOCTYPE html>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #FFFFFF;
+    }
+
+    .navbar-brand {
+        background-color: #931B25;
+        color: #FFFFFF;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .brand {
+        font-family: "Goudy Bookletter 1911", serif;
+        font-size: 24px;
+        color: #000000;
+    }
+
+    .nav-item {
+        background-color: #000000;
+        color: #FFFFFF;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .dropdown-menu {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-menu-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-menu:hover .dropdown-menu-content {
+        display: block;
+    }
+
+    .dropdown-menu-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        .dropdown-menu-content a:hover {
+            background-color: #f1f1f1;
+        }
+</style>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -12,7 +73,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DnDCharacterBuilder.Web</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DnD Character Builder</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,10 +81,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Characters</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Classes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Races</a>
                         </li>
                     </ul>
                 </div>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DnDCharacterBuilder.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,5 +10,6 @@ namespace DnDCharacterBuilder.Application.Interfaces
     public interface IRaceService
     {
         Task SeedRaces();
+        IEnumerable<Race> GetAllRaces();
     }
 }

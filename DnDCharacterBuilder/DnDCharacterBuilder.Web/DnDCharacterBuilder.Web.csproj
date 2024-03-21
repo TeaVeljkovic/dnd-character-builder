@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Auth0.AspNetCore.Authentication" Version="1.4.1" />
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.16">
       <PrivateAssets>all</PrivateAssets>
@@ -15,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DnDCharacterBuilder.Application\DnDCharacterBuilder.Application.csproj" />
     <ProjectReference Include="..\DnDCharacterBuilder.Data\DnDCharacterBuilder.Data.csproj" />
   </ItemGroup>
 

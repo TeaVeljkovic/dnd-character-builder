@@ -1,4 +1,5 @@
-﻿using DnDCharacterBuilder.Common.Enums;
+﻿using DnDCharacterBuilder.Common.Enum;
+using DnDCharacterBuilder.Common.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,20 @@ namespace DnDCharacterBuilder.Common.Helpers
             "wis" => Ability.Wisdom,
             "cha" => Ability.Charisma,
             _ => throw new ArgumentOutOfRangeException(nameof(ability), $"Not expected ability value: {ability}")
+        };
+
+        public static Alignment MapAlignment(string alignment) => alignment.ToLower() switch
+        {
+            "chaotic evil" => Alignment.ChaoticEvil,
+            "chaotic good" => Alignment.ChaoticGood,
+            "chaotic neutral" => Alignment.ChaoticNeutral,
+            "lawful evil" => Alignment.LawfulEvil,
+            "lawful good" => Alignment.LawfulGood,
+            "lawful neutral" => Alignment.LawfulNeutral,
+            "neutral evil" => Alignment.NeutralEvil,
+            "neutral good" => Alignment.NeutralGood,
+            "neutral" => Alignment.Neutral,
+            _ => throw new ArgumentOutOfRangeException(nameof(alignment), $"Not expected alignment value: {alignment}")
         };
     }
 }

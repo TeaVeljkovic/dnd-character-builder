@@ -22,6 +22,11 @@ namespace DnDCharacterBuilder.Application.Services
             _skillRepository = skillRepository;
         }
 
+        public IEnumerable<Class> GetAllClasses()
+        {
+            return _classReopository.GetAll();
+        }
+
         public async Task SeedClasses()
         {
             //var class1 = _classReopository.GetAsQueryable().Include(x => x.ClassSkillProficiencieBonus).ThenInclude(x => x.Skill).Include(x => x.ClassSavingThrows).FirstOrDefault();

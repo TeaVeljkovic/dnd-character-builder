@@ -20,6 +20,11 @@ namespace DnDCharacterBuilder.Application.Services
             _mapper=mapper;
         }
 
+        public IEnumerable<Race> GetAllRaces()
+        {
+            return _raceRepository.GetAll();
+        }
+
         public async Task SeedRaces()
         {
             if (_raceRepository.GetAll().Count != 0)

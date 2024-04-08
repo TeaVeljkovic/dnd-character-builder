@@ -20,6 +20,7 @@ namespace DnDCharacterBuilder.Application.Models
         public int Intelligence { get; set; }
         public int Wisdom { get; set; }
         public int Charisma { get; set; }
+        public IEnumerable<Guid> SkillProficiencies { get; set; }
         public string PersonalityTraits { get; set; }
         public string Ideals { get; set; }
         public string Bonds { get; set; }

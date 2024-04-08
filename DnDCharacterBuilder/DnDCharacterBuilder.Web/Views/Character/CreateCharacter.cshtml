@@ -13,65 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DnD Character Builder</title>
     <style>
-        /* body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #FFFFFF;
-        }
-
-        .navbar {
-            background-color: #931B25;
-            color: #FFFFFF;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand {
-            font-family: "Goudy Bookletter 1911", serif;
-            font-size: 24px;
-            color: #000000;
-        }
-
-        .profile-button {
-            background-color: #000000;
-            color: #FFFFFF;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .dropdown-menu {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-menu-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .dropdown-menu:hover .dropdown-menu-content {
-            display: block;
-        }
-
-        .dropdown-menu-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-            .dropdown-menu-content a:hover {
-                background-color: #f1f1f1;
-            } */
         /* Styles for text fields */
         .text-fields {
             float: left;
@@ -123,30 +64,6 @@
     </style>
 </head>
 <body>
-    @* <div class="navbar">
-        <div class="brand">DnD Character Builder</div>
-        <button class="profile-button">Profile Name</button>
-    </div>
-
-    <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
-        <div class="dropdown-menu" style="margin-right: 20px;">
-            <button class="profile-button">Class</button>
-            <form action="/Character/CreateCharacter" method="post">
-                <select asp-items="Model.ClassToSelect" asp-for="ClassId">
-                    <option></option>
-                </select>
-            </form>
-        </div>
-        <div class="dropdown-menu">
-            <button class="profile-button">Race</button>
-            <form action="/Character/CreateCharacter" method="post">
-                <select asp-items="Model.RaceToSelect" asp-for="RaceId">
-                    <option></option>
-                </select>
-            </form>
-        </div>
-        <input type="submit">
-    </div> *@
     <form action="/Character/CreateCharacter" method="post">
         <div class="text-fields">
             <label for="CharacterName">Character Name:</label>

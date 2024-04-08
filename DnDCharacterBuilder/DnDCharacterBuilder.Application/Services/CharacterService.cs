@@ -12,28 +12,39 @@ namespace DnDCharacterBuilder.Application.Services
         private readonly IMapper _mapper;
         private readonly IRepository<Class> _classRepository;
         private readonly IRepository<Race> _raceRepository;
+        private readonly IRepository<Skill> _skillRepository;
 
-        public CharacterService(IRepository<Character> characterRepository, IMapper mapper, IRepository<Class> classRepository, IRepository<Race> raceRepository)
+        public CharacterService(IRepository<Character> characterRepository, IMapper mapper, IRepository<Class> classRepository, IRepository<Race> raceRepository, IRepository<Skill> skillRepository)
         {
             _characterRepository = characterRepository;
             _mapper = mapper;
             _classRepository = classRepository;
             _raceRepository = raceRepository;
+            _skillRepository = skillRepository;
         }
 
         public async Task SaveCharacter(CreateCharacterModel characterToSave, string userId)
         {
             var character = _mapper.Map<Character>(characterToSave);
-            var classToAdd = _classRepository.GetAll().Where(x => x.Id == characterToSave.ClassId).FirstOrDefault();
-            var raceToAdd = _raceRepository.GetAll().Where(x => x.Id == characterToSave.RaceId).FirstOrDefault();
 
-            character.Class = classToAdd;
-            character.Race = raceToAdd;
             character.UserId = new Guid(userId);
 
-            _characterRepository.Update(character);
+            _characterRepository.Add(character);
         }
 
+        public int GetValueForSkill(Guid skillId, Character character)
+        {
+            var skill = _skillRepository.GetAsQueryable().FirstOrDefault(x => x.Id == skillId);
+            var ability = skill.RelatedAbility;
+            
+            var characterAbility = character.CharacterAbilities.Where(x => x.Ability == ability).FirstOrDefault();
 
+            if (characterAbility.ProficiencyBonus)
+            {
+                return characterAbility.Value + 1;
+            }
+
+            return characterAbility.Value;
+        }
     }
 }

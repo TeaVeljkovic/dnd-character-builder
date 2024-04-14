@@ -32,6 +32,16 @@ namespace DnDCharacterBuilder.Application.Services
             _characterRepository.Add(character);
         }
 
+        public void DeleteCharacter(Guid characterId)
+        {
+            _characterRepository.Delete(characterId);
+        }
+
+        public void RaceBonusCalculator(Character character)
+        {
+            //character.Class.ClassSkillProficiencieBonus
+        }
+
         public int GetValueForSkill(Guid skillId, Character character)
         {
             var skill = _skillRepository.GetAsQueryable().FirstOrDefault(x => x.Id == skillId);

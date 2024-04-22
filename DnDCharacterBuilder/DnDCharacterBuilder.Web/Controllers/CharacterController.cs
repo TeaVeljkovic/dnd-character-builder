@@ -15,13 +15,15 @@ namespace DnDCharacterBuilder.Web.Controllers
         private readonly IRaceService _raceService;
         private readonly IMapper _mapper;
         private readonly ICharacterService _characterService;
+        private readonly ISkillService _skillService;
 
-        public CharacterController(IClassService classService, IMapper mapper, ICharacterService characterService, IRaceService raceService)
+        public CharacterController(IClassService classService, IMapper mapper, ICharacterService characterService, IRaceService raceService, ISkillService skillService)
         {
             _classService = classService;
             _mapper = mapper;
             _characterService = characterService;
             _raceService = raceService;
+            _skillService = skillService;
         }
 
         [HttpGet]
@@ -29,6 +31,7 @@ namespace DnDCharacterBuilder.Web.Controllers
         {
             var classes = _classService?.GetAllClasses();
             var races = _raceService?.GetAllRaces();
+            var skills = _skillService?.GetAllSkills();
 
             var model = new CreateCharacterViewModel
             {
@@ -57,7 +60,9 @@ namespace DnDCharacterBuilder.Web.Controllers
                 PersonalityTraits = "",
                 Ideals = "",
                 Bonds = "",
-                Flaws = ""
+                Flaws = "",
+
+                Skills = skills.ToList()
             };
             
             return View(model);

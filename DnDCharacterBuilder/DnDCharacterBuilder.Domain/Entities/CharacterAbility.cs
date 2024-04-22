@@ -6,7 +6,7 @@ namespace DnDCharacterBuilder.Domain.Entities
     {
         public Guid CharacterId { get; set; }
         public virtual Ability Ability { get; set; }
-        public bool ProficiencyBonus { get; set; }
+        public bool ProficiencyBonus { get; set; } //for saving throws only
         public int Value { get; set; }
         public int Modifier => (int)Math.Floor((Value - 10.0) / 2.0);
     }

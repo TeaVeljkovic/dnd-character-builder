@@ -38,6 +38,11 @@ namespace DnDCharacterBuilder.Application.Services
             }
         }
 
+        public IEnumerable<Skill> GetAllSkills()
+        {
+            return _skillRepository.GetAll();
+        }
+
         private async Task AddSkill(HttpClient client, ListResult skill)
         {
             var skillResponse = await client.GetAsync(ApiRoutesExternal.Skills + "/" + skill.Index);
@@ -52,21 +57,6 @@ namespace DnDCharacterBuilder.Application.Services
 
                 _skillRepository.Add(convertedSkill);
             }
-        }
-
-        public void Foo()
-        {
-            //get all classes
-            //foreach
-            //var class = map(ova sto sum go zemal od api)
-            //var skills = _skillsContext.GetAll()
-            //map class
-            //foreach prof_choice
-            //var currentSkill = skills.FirstOrDefault(x => profChoice.Name.Contains(x.name))
-            // class.ClassSkillProficiencieBonus.Add(new ClassSkillProficiencieBonus{
-            //      skillId = currentSkill.Id
-            // })
-
         }
     }
 }

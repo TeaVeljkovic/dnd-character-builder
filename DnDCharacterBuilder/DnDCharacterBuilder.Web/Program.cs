@@ -8,6 +8,7 @@ using DnDCharacterBuilder.Data.Interfaces;
 using DnDCharacterBuilder.Data.Repositories;
 using DnDCharacterBuilder.Domain.Entities;
 using DnDCharacterBuilder.Application.Models;
+using DnDCharacterBuilder.Web.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +26,9 @@ builder.Services
     .AddScoped<ICharacterService, CharacterService>()
     .AddAutoMapper(typeof(CreateCharacterModel))
     .AddAutoMapper(typeof(SkillMappings))
-    .AddAutoMapper(typeof(ClassMappings));
+    .AddAutoMapper(typeof(ClassMappings))
+    .AddAutoMapper(typeof(ClassViewModel))
+    .AddAutoMapper(typeof(RaceViewModel));
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddAuth0WebAppAuthentication(options =>

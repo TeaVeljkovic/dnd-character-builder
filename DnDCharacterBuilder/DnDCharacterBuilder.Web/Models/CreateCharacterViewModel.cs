@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using DnDCharacterBuilder.Domain.Entities;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace DnDCharacterBuilder.Web.Models
@@ -12,6 +13,8 @@ namespace DnDCharacterBuilder.Web.Models
         public Guid ClassId { get; set; }
         public IEnumerable<SelectListItem> RaceToSelect { get;set; }
         public Guid RaceId { get; set; }
+        public bool IsInspired { get; set; }
+        public int PassivePerception { get; set; }
         public string Alignment { get; set; }
         public string Background { get; set; }
         public int ExpPoints { get; set; }
@@ -28,5 +31,6 @@ namespace DnDCharacterBuilder.Web.Models
         public int ArmorClass { get; set; }
         public int HitPointsMax { get; set; }
         public int CurrentHitPoints { get; set; }
+        public List<Skill> Skills { get; set; }
     }
 }

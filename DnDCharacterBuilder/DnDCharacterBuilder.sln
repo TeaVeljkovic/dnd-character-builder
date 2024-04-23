@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnDCharacterBuilder.Applica
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnDCharacterBuilder.SeedData", "DnDCharacterBuilder.SeedData\DnDCharacterBuilder.SeedData.csproj", "{8631AC45-EB7A-43A7-B6E8-C7D117F0876B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDCharacterBuilder.Common", "DnDCharacterBuilder.Common\DnDCharacterBuilder.Common.csproj", "{E93FCCC3-EF28-4A34-835B-E2825DCCE026}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnDCharacterBuilder.Common", "DnDCharacterBuilder.Common\DnDCharacterBuilder.Common.csproj", "{E93FCCC3-EF28-4A34-835B-E2825DCCE026}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDCharacterBuilder.Web", "DnDCharacterBuilder.Web\DnDCharacterBuilder.Web.csproj", "{FB036760-C9FE-421F-907D-C88016AA0684}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnDCharacterBuilder.Web", "DnDCharacterBuilder.Web\DnDCharacterBuilder.Web.csproj", "{FB036760-C9FE-421F-907D-C88016AA0684}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDCharacterBuilder.API", "DnDCharacterBuilder.API\DnDCharacterBuilder.API.csproj", "{AED700C2-C214-4F47-BEC6-879BF2ACC508}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{FB036760-C9FE-421F-907D-C88016AA0684}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB036760-C9FE-421F-907D-C88016AA0684}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB036760-C9FE-421F-907D-C88016AA0684}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AED700C2-C214-4F47-BEC6-879BF2ACC508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AED700C2-C214-4F47-BEC6-879BF2ACC508}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AED700C2-C214-4F47-BEC6-879BF2ACC508}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AED700C2-C214-4F47-BEC6-879BF2ACC508}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

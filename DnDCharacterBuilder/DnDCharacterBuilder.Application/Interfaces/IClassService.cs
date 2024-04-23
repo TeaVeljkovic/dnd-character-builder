@@ -11,5 +11,7 @@ namespace DnDCharacterBuilder.Application.Interfaces
     {
         Task SeedClasses();
         IEnumerable<Class> GetAllClasses();
+        Class GetClassById(Guid Id);
+        public void UpdateClasses(Class newClass);
     }
 }

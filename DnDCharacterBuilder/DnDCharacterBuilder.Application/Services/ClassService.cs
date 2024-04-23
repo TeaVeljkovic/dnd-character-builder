@@ -27,6 +27,16 @@ namespace DnDCharacterBuilder.Application.Services
             return _classReopository.GetAll();
         }
 
+        public Class GetClassById(Guid Id)
+        {
+            return _classReopository.GetAll().FirstOrDefault(x => x.Id == Id);
+        }
+
+        public void UpdateClasses(Class newClass)
+        {
+            _classReopository.Add(newClass);
+        }
+
         public async Task SeedClasses()
         {
             //var class1 = _classReopository.GetAsQueryable().Include(x => x.ClassSkillProficiencieBonus).ThenInclude(x => x.Skill).Include(x => x.ClassSavingThrows).FirstOrDefault();

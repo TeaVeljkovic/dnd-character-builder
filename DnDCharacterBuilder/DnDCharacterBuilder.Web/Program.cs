@@ -9,6 +9,7 @@ using DnDCharacterBuilder.Data.Repositories;
 using DnDCharacterBuilder.Domain.Entities;
 using DnDCharacterBuilder.Application.Models;
 using DnDCharacterBuilder.Web.Models;
+using DnDCharacterBuilder.Web.CustomMiddleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,6 +39,8 @@ builder.Services.AddAuth0WebAppAuthentication(options =>
 });
 
 var app = builder.Build();
+
+app.UseMiddleware<ContentSecurityPolicyMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

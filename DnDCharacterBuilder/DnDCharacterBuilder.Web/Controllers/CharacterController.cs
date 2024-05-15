@@ -3,6 +3,7 @@ using DnDCharacterBuilder.Application.Interfaces;
 using DnDCharacterBuilder.Application.Models;
 using DnDCharacterBuilder.Domain.Entities;
 using DnDCharacterBuilder.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
@@ -26,6 +27,7 @@ namespace DnDCharacterBuilder.Web.Controllers
             _skillService = skillService;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult CreateCharacter()
         {

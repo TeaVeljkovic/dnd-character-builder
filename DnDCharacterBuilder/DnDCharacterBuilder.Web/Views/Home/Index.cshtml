@@ -5,70 +5,21 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=MedievalSharp">
-<style>
-    body {
-        margin: 0;
-        font-family: "MedievalSharp";
-        background-color: floralwhite;
-    }
-
-    .dnd-image {
-        position: absolute;
-        left: 400px;
-        right: 0px;
-        bottom: 0px;
-        width: 80%;
-        height: 80%;
-        background-image: url(/images/dnd-character.webp);
-        background-color: floralwhite;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: right bottom;
-        display: flex;
-        justify-content: right;
-        align-items: center;
-    }
-
-    .welcome-text {
-            text-align: center;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-100%, -90%);
-            color: #6e3841;
-    }
-
-    .button {
-        background-color: floralwhite;
-        border: 2px solid #6e3841;
-        color: #6e3841;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-family: "MedievalSharp";
-        font-size: 16px;
-        cursor: pointer;
-    }
-
-    .button:hover {
-        background-color: #6e3841;
-        color: floralwhite;
-    }
-</style>
+    <link href="./css/Layout.css" rel="stylesheet" />
+    <link href="~/css/WelcomePageStyle.css" rel="stylesheet"/>
 </head>
 <body>
     <div class="dnd-image"/>
     <div class="welcome-text">
-        <h1 style="font-size:80px">DnD Character Creator</h1>
+        <h1 class="title">DnD Character Creator</h1>
         <div>
             <a href="/account/login">
-                <button class="button" style="font-size:40px">Join Here</button>
+                <button class="button">Join Here</button>
             </a>
         </div>
         <div>
             <a href="/Character/CreateCharacter">
-                <button class="button" style="font-size:40px">Create Character</button>
+                <button class="button">Create Character</button>
             </a>
         </div>
     </div>

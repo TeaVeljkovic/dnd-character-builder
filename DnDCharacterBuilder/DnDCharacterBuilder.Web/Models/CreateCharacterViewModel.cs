@@ -1,4 +1,5 @@
-﻿using DnDCharacterBuilder.Domain.Entities;
+﻿using DnDCharacterBuilder.Application.Models;
+using DnDCharacterBuilder.Domain.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
@@ -32,5 +33,7 @@ namespace DnDCharacterBuilder.Web.Models
         public int HitPointsMax { get; set; }
         public int CurrentHitPoints { get; set; }
         public List<Skill> Skills { get; set; }
+        public List<string> SelectedSkills { get; set; }
+        //public ClassSkillSelection SelectedClassAttributes { get; set; }
     }
 }

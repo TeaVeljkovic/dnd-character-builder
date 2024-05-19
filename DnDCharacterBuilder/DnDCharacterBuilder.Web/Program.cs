@@ -29,6 +29,7 @@ builder.Services
     .AddAutoMapper(typeof(SkillMappings))
     .AddAutoMapper(typeof(ClassMappings))
     .AddAutoMapper(typeof(ClassViewModel))
+    .AddAutoMapper(typeof(ClassSkillMappings))
     .AddAutoMapper(typeof(RaceViewModel));
 builder.Services.AddAutoMapper(typeof(Program));
 

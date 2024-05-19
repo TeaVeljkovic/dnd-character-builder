@@ -27,5 +27,11 @@ namespace DnDCharacterBuilder.Web.Controllers
             return View(model);
         }
 
+        public IActionResult GetAttributesForClass(Guid classId)
+        {
+            var attributesForClass = _classService.GetClassAttributesById(classId);
+            return Json(attributesForClass);
+        }
+
     }
 }

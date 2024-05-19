@@ -6,6 +6,7 @@ using DnDCharacterBuilder.Data.Interfaces;
 using DnDCharacterBuilder.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System.Reflection.Metadata.Ecma335;
 
 namespace DnDCharacterBuilder.Application.Services
 {
@@ -29,7 +30,27 @@ namespace DnDCharacterBuilder.Application.Services
 
         public Class GetClassById(Guid Id)
         {
-            return _classReopository.GetAll().FirstOrDefault(x => x.Id == Id);
+            var classes = _classReopository.GetAsQueryable()
+                .Include(x => x.ClassSavingThrows)
+                .Include(x => x.ClassSkillProficiencieBonus);
+            return classes.FirstOrDefault(x => x.Id == Id);
+        }
+
+        public ClassSkillSelection GetClassAttributesById(Guid Id)
+        {
+            var classes = GetClassById(Id);
+            //Console.WriteLine("class is: ", classes);
+            //var selected = _mapper.Map<ClassSkillSelection>(classes);
+            //Console.WriteLine("selected are: ", selected);
+            // savingthrows i profs se null, shto znachi od baza ne se zemeni ko shto treba ???
+            var selected = new ClassSkillSelection
+            {
+                ClassSavingThrows = classes.ClassSavingThrows.Select(x => x.Ability.ToString().Substring(0, 3).ToUpper()).ToList(),
+                ClassSkillProficiencieBonus = classes.ClassSkillProficiencieBonus.Select(x => x.ClassId).ToList(),
+                ProficiencyChoiceCount = classes.ProficiencyChoiceCount,
+                ProficiencyDescription = classes.ProficiencyDescription,
+            };
+            return selected;
         }
 
         public void UpdateClasses(Class newClass)

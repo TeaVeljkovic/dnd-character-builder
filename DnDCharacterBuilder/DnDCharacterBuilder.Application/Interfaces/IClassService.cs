@@ -1,4 +1,5 @@
-﻿using DnDCharacterBuilder.Domain.Entities;
+﻿using DnDCharacterBuilder.Application.Models;
+using DnDCharacterBuilder.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,6 @@ namespace DnDCharacterBuilder.Application.Interfaces
         IEnumerable<Class> GetAllClasses();
         Class GetClassById(Guid Id);
         public void UpdateClasses(Class newClass);
+        public ClassSkillSelection GetClassAttributesById(Guid Id);
     }
 }

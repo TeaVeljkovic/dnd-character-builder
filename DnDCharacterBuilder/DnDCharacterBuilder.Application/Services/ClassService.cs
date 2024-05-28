@@ -46,7 +46,7 @@ namespace DnDCharacterBuilder.Application.Services
             var selected = new ClassSkillSelection
             {
                 ClassSavingThrows = classes.ClassSavingThrows.Select(x => x.Ability.ToString().Substring(0, 3).ToUpper()).ToList(),
-                ClassSkillProficiencieBonus = classes.ClassSkillProficiencieBonus.Select(x => x.ClassId).ToList(),
+                ClassSkillProficiencieBonus = classes.ClassSkillProficiencieBonus.Select(x => x.SkillId).ToList(),
                 ProficiencyChoiceCount = classes.ProficiencyChoiceCount,
                 ProficiencyDescription = classes.ProficiencyDescription,
             };

@@ -10,6 +10,7 @@ using DnDCharacterBuilder.Domain.Entities;
 using DnDCharacterBuilder.Application.Models;
 using DnDCharacterBuilder.Web.Models;
 using DnDCharacterBuilder.Web.CustomMiddleware;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,13 +31,19 @@ builder.Services
     .AddAutoMapper(typeof(ClassMappings))
     .AddAutoMapper(typeof(ClassViewModel))
     .AddAutoMapper(typeof(ClassSkillMappings))
-    .AddAutoMapper(typeof(RaceViewModel));
+    .AddAutoMapper(typeof(RaceViewModel))
+    .AddAutoMapper(typeof(CharacterViewModel));
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddAuth0WebAppAuthentication(options =>
 {
     options.Domain = builder.Configuration["Auth0:Domain"];
     options.ClientId = builder.Configuration["Auth0:ClientId"];
+});
+
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
 });
 
 var app = builder.Build();
@@ -59,7 +66,8 @@ app.UseRouting();
 app.UseCookiePolicy(new CookiePolicyOptions
 {
     MinimumSameSitePolicy = SameSiteMode.None,
-    Secure = CookieSecurePolicy.Always
+    Secure = CookieSecurePolicy.Always,
+    HttpOnly = Microsoft.AspNetCore.CookiePolicy.HttpOnlyPolicy.Always
 });
 
 app.UseAuthentication();

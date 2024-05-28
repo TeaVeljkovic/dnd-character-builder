@@ -10,7 +10,9 @@ namespace DnDCharacterBuilder.Application.Interfaces
 {
     public interface ICharacterService
     {
-        Task SaveCharacter(CreateCharacterModel characterToSave, string userId);
+        Task<CreateCharaterOutput> SaveCharacter(CreateCharacterModel characterToSave, string userId);
         void DeleteCharacter(Guid characterId);
+        IEnumerable<Character> GetCharacters();
+        IEnumerable<Character> GetCharactersByUserId(string userId);
     }
 }

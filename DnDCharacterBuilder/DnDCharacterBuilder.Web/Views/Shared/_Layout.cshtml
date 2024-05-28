@@ -14,10 +14,13 @@
     <ul>
         <li><a href="/home">Home</a></li>
         <li><a href="/Character/CreateCharacter">Create</a></li>
-        <li><a href="/Characters">Characters</a></li>
+        <li><a href="/Character/ListCharacters">Characters</a></li>
         <li><a href="/Class/ListClasses">Classes</a></li>
         <li><a href="/Race/ListRaces">Races</a></li>
+        <li class="logout"><a href="/account/logout" class="logout">Lgout</a></li>
     </ul>
+
+
 
     <div class="container">
         <main role="main" class="pb-3">
@@ -29,21 +32,3 @@
 
 
 </html>
-
-@* <script type="text/javascript">
-    $(document).ready(function () {
-        //var url = window.location.pathname;
-        var url = 'http://stacksnippets.net/js#division';
-        console.log('url-->', url);
-
-        $('ul li a').each(function () {
-            var href = $(this).attr('href');
-            if (!!url.match(href)) {
-                $(this).addClass('active');
-            } else {
-                $(this).removeClass('active');
-            }
-        });
-
-    });
-</script> *@

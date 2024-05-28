@@ -71,13 +71,44 @@ namespace DnDCharacterBuilder.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateCharacter(CreateCharacterViewModel model)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateCharacter(CreateCharacterViewModel model)
         {
             var characterUserInput = _mapper.Map<CreateCharacterModel>(model);
             //get userId from context
             var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
-            var newCharacter = _characterService.SaveCharacter(characterUserInput, userId);
-            return Ok();
+
+            var newCharacter = await _characterService.SaveCharacter(characterUserInput, userId);
+
+            if (!newCharacter.IsSuccessful)
+            {
+                return BadRequest(newCharacter.ErrorMessage);
+            }
+            
+            return RedirectToAction("CreateCharacter");
+        }
+
+        [Authorize]
+        public IActionResult ListCharacters()
+        {
+            var characters = _characterService.GetCharactersByUserId(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
+
+            var model = _mapper.Map<List<CharacterViewModel>>(characters);
+
+            return View(model);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> ShowCharacter(Guid id)
+        {
+            var characters = _characterService.GetCharactersByUserId(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            var characterById = characters.Where(x => x.Id == id).FirstOrDefault();
+
+            var model = _mapper.Map<CharacterViewModel>(characterById);
+            model.Skills = _skillService.GetAllSkills().ToList();
+
+            return View(model);
         }
     }
 }

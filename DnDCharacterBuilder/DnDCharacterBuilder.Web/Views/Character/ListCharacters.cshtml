@@ -1,0 +1,22 @@
+﻿@model List<CharacterViewModel>;
+@{
+    Layout = "_Layout";
+}
+
+<link href="~/css/TableStyle.css" rel="stylesheet" />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var character in Model)
+        {
+            <tr>
+                <td>@character.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

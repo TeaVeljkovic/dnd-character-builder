@@ -1,15 +1,16 @@
 ﻿using DnDCharacterBuilder.Common.Enum;
+using DnDCharacterBuilder.Domain.Entities;
 
-namespace DnDCharacterBuilder.Domain.Entities
+namespace DnDCharacterBuilder.Web.Models
 {
-    public class Character : BaseClass
+    public class CharacterViewModel
     {
-        public string UserId { get; set; }
         public string Name { get; set; }
         public Guid RaceId { get; set; }
-        public virtual Race Race { get; set; }
+        public Class Class { get; set; }
         public Guid ClassId { get; set; }
-        public virtual Class Class { get; set; }
+        public Race Race { get; set; }
+        public List<Skill> Skills { get; set; }
         public bool IsInspired { get; set; }
         public Alignment Alignment { get; set; }
         public string Background { get; set; }
@@ -23,5 +24,11 @@ namespace DnDCharacterBuilder.Domain.Entities
         public int ArmorClass { get; set; }
         public int HitPointsMax { get; set; }
         public int CurrentHitPoints { get; set; }
+        public int Strength { get; set; }
+        public int Dexterity { get; set; }
+        public int Constitution { get; set; }
+        public int Intelligence { get; set; }
+        public int Wisdom { get; set; }
+        public int Charisma { get; set; }
     }
 }

@@ -3,7 +3,7 @@
         const atributeChanged = $(this).data("atribute-control");
         const abilityValue = $(this).val();
         const modifier = (parseInt(abilityValue) - 10) / 2;
-        $(`[data-ability="${atributeChanged}"]`).val(modifier >= 0 ? '+' + Math.floor(modifier) : Math.floor(modifier))
+        $(`input[type="text"][data-ability="${atributeChanged}"]`).val(modifier >= 0 ? '+' + Math.floor(modifier) : Math.floor(modifier))
     })
 
     $('#selectedClass').on('change', function () {
@@ -19,21 +19,47 @@
                     console.log(response);
                     try {
                         if (response) {
-                            const proficiencyDescription = response.proficiencyDescription || "No description available";
-                            const proficiencyChoiceCount = response.proficiencyChoiceCount || 0;
                             const classSavingThrows = response.classSavingThrows || [];
                             const classSkillProficiencieBonus = response.classSkillProficiencieBonus || [];
+                            const proficiencyDescription = response.proficiencyDescription || "";
+                            const proficiencyChoiceCount = response.proficiencyChoiceCount || 0;
 
-                            console.log("Proficiency Description: " + proficiencyDescription);
-                            console.log("Proficiency Choice Count: " + proficiencyChoiceCount);
-                            console.log("Class Saving Throws: ", classSavingThrows);
-                            console.log("Class Skill Proficiencie Bonus: ", classSkillProficiencieBonus);
+                            $('input[type="checkbox"][name="SelectedSkills"]').prop('disabled', true);
+                            $('input[type="checkbox"][name="SelectedSkills"]').prop('checked', false);
+                            $('#proficiencyDescription').text(proficiencyDescription);
+                            $('input[type="checkbox"][name="save-prof"]').prop('checked', false);
+
+                            classSkillProficiencieBonus.forEach(function (skillId) {
+                                console.log("Enabling skill ID: " + skillId);
+                                const checkbox = $(`input[type="checkbox"][id="${skillId}"]`);
+                                if (checkbox.length) {
+                                    checkbox.prop('disabled', false);
+                                } else {
+                                    console.error("Checkbox with ID " + skillId + " not found.");
+                                }
+                            });
+
+                            $('.skillsCheckbox').on('change', function () {
+                                const skillsLength = $('.skillsCheckbox:checked').length;
+                                console.log("selection length: ", skillsLength);
+                                console.log("proficiencyChoiceCount: ", proficiencyChoiceCount);
+                                if (skillsLength > proficiencyChoiceCount) {
+                                    console.log("I'm here." + `${$(this).val()}`);
+                                    $(`input[type="checkbox"][id="${$(this).val()}"]`).prop('checked', false);
+                                }
+                            });
+
+                            classSavingThrows.forEach(function (modifier) {
+                                $(`input[type="checkbox"][id=${modifier}]`).prop('checked', true);
+                            });
                         }
                         else {
                             console.log("error")
                         }
+
+
                     } catch (e) {
-                        console.error("AJAX Error: " + status + " - " + error);
+                        console.error("AJAX Error:" + e);
                     }
                 },
                 error: function (xhr, status, error) {

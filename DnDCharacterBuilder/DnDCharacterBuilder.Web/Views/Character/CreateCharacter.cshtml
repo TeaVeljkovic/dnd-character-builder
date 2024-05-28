@@ -9,9 +9,10 @@
 
 
 <form class="charsheet" action="/Character/CreateCharacter" method="post">
+    @Html.AntiForgeryToken()
     <header>
         <section class="charname">
-            <label for="charname">Character Name</label><input name="charname" placeholder="Thoradin Fireforge" />
+            <label for="CharacterName">Character Name</label><input name="CharacterName" placeholder="Thoradin Fireforge" />
         </section>
         <section class="misc">
             <ul>
@@ -45,7 +46,7 @@
                     </select>
                 </li>
                 <li>
-                    <label for="experiencepoints">Experience Points</label><input name="experiencepoints" placeholder="3240" />
+                    <label for="ExpPoints">Experience Points</label><input name="ExpPoints" placeholder="3240" />
                 </li>
             </ul>
         </section>
@@ -121,22 +122,34 @@
                     <div class="saves list-section box">
                         <ul>
                             <li>
-                                <label for="Strength-save">Strength</label><input data-ability="STR" name="Strength-save" id="StrengthSaveModifier" class="strength-mod" placeholder="+0" type="text" /><input name="Strength-save-prof" type="checkbox" />
+                                <label for="Strength-save">Strength</label>
+                                <input data-ability="STR" disabled name="Strength-save" id="StrengthSaveModifier" class="strength-mod" placeholder="+0" type="text" />
+                                <input id="STR" name="save-prof" disabled type="checkbox" />
                             </li>
                             <li>
-                                <label for="Dexterity-save">Dexterity</label><input data-ability="DEX" name="Dexterity-save" id="DexteritySaveModifier" placeholder="+0" type="text" /><input name="Dexterity-save-prof" type="checkbox" />
+                                <label for="Dexterity-save">Dexterity</label>
+                                <input data-ability="DEX" disabled name="Dexterity-save" id="DexteritySaveModifier" placeholder="+0" type="text" />
+                                <input id="DEX" name="save-prof" disabled type="checkbox" />
                             </li>
                             <li>
-                                <label for="Constitution-save">Constitution</label><input data-ability="CON" name="Constitution-save" id="ConstitutionSaveModifier" placeholder="+0" type="text" /><input name="Constitution-save-prof" type="checkbox" />
+                                <label for="Constitution-save">Constitution</label>
+                                <input data-ability="CON" disabled name="Constitution-save" id="ConstitutionSaveModifier" placeholder="+0" type="text" />
+                                <input id="CON" name="save-prof" disabled type="checkbox" />
                             </li>
                             <li>
-                                <label for="Wisdom-save">Wisdom</label><input data-ability="WIS" name="Wisdom-save" id="WisdomSaveModifier" placeholder="+0" type="text" /><input name="Wisdom-save-prof" type="checkbox" />
+                                <label for="Wisdom-save">Wisdom</label>
+                                <input data-ability="WIS" disabled name="Wisdom-save" id="WisdomSaveModifier" placeholder="+0" type="text" />
+                                <input id="WIS" disabled name="save-prof" type="checkbox" />
                             </li>
                             <li>
-                                <label for="Intelligence-save">Intelligence</label><input data-ability="INT" name="Intelligence-save" id="IntelligenceSaveModifier" placeholder="+0" type="text" /><input name="Intelligence-save-prof" type="checkbox" />
+                                <label for="Intelligence-save">Intelligence</label>
+                                <input data-ability="INT" disabled name="Intelligence-save" id="IntelligenceSaveModifier" placeholder="+0" type="text" />
+                                <input id="INT" name="save-prof" disabled type="checkbox" />
                             </li>
                             <li>
-                                <label for="Charisma-save">Charisma</label><input data-ability="CHA" name="Charisma-save" id="CharismaSaveModifier" placeholder="+0" type="text" /><input name="Charisma-save-prof" type="checkbox" />
+                                <label for="Charisma-save">Charisma</label>
+                                <input data-ability="CHA" disabled name="Charisma-save" id="CharismaSaveModifier" placeholder="+0" type="text" />
+                                <input id="CHA" name="save-prof" disabled type="checkbox" />
                             </li>
                         </ul>
                         <div class="label">
@@ -149,8 +162,8 @@
                             {
                                 <li>
                                     <label for="@skill.Id">@skill.Name<span class="skill">(@skill.TruncatedName)</span></label>
-                                    <input placeholder="+0" type="text" data-ability="@skill.TruncatedName"/>
-                                    <input id="@skill.Id" value="@skill.Id" name="SelectedSkills" type="checkbox" />
+                                    <input placeholder="+0" disabled type="text" data-ability="@skill.TruncatedName"/>
+                                    <input id="@skill.Id" data-ability="@skill.TruncatedName" value="@skill.Id" class="skillsCheckbox" name="SelectedSkills" type="checkbox" />
                                 </li>
                             }
                         </ul>
@@ -193,14 +206,14 @@
 
             </section>
             <section class="attacksandspellcasting">
-
+                <div id="proficiencyDescription"></div>
             </section>
             
         </section>
         <section>
             <section class="flavor">
                 <div class="personality">
-                    <label for="personality">Personality</label><textarea name="personality"></textarea>
+                    <label for="PersonalityTraits">Personality</label><textarea name="PersonalityTraits"></textarea>
                 </div>
                 <div class="ideals">
                     <label for="ideals">Ideals</label><textarea name="ideals"></textarea>
@@ -221,6 +234,5 @@
     </main>
 </form>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="~/js/CreateCharacter.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

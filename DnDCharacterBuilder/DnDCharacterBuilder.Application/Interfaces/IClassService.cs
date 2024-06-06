@@ -13,7 +13,7 @@ namespace DnDCharacterBuilder.Application.Interfaces
         Task SeedClasses();
         IEnumerable<Class> GetAllClasses();
         Class GetClassById(Guid Id);
-        public void UpdateClasses(Class newClass);
-        public ClassSkillSelection GetClassAttributesById(Guid Id);
+        void UpdateClasses(Class newClass);
+        ClassSkillSelection GetClassAttributesById(Guid Id);
     }
 }

@@ -1,4 +1,5 @@
-﻿using DnDCharacterBuilder.Domain.Entities;
+﻿using DnDCharacterBuilder.Application.Models;
+using DnDCharacterBuilder.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,7 @@ namespace DnDCharacterBuilder.Application.Interfaces
     {
         Task SeedRaces();
         IEnumerable<Race> GetAllRaces();
+        Race GetRaceById(Guid Id);
+        RaceSelection GetRaceAttributesById(Guid Id);
     }
 }

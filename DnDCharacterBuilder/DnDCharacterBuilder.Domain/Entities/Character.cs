@@ -21,6 +21,7 @@ namespace DnDCharacterBuilder.Domain.Entities
         public string Bonds { get; set; }
         public string Flaws { get; set; }
         public int ArmorClass { get; set; }
+        public int Speed { get; set; }
         public int HitPointsMax { get; set; }
         public int CurrentHitPoints { get; set; }
     }

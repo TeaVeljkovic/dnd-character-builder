@@ -5,5 +5,6 @@
         public Guid CharacterId { get; set; }
         public Guid SkillId { get; set; }
         public virtual Skill Skill { get; set; }
+        public bool isProficient { get; set; }
     }
 }

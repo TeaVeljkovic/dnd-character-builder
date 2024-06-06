@@ -434,7 +434,7 @@ form.charsheet {
                             form.charsheet main section.combat > div.hp > div.regular > div.current input {
                                 border: 0;
                                 width: 100%;
-                                padding: 1em 0;
+                                padding: 10px 0;
                                 font-size: 20px;
                                 text-align: center;
                             }
@@ -486,6 +486,7 @@ form.charsheet {
                         border-radius: 0 0 10px 10px;
                         display: flex;
                         flex-direction: column;
+                        height: 70px;
                     }
 
                         form.charsheet main section.combat > div.hitdice > div > div.total {
@@ -587,16 +588,30 @@ form.charsheet {
                                 }
 
         form.charsheet main section.attacksandspellcasting {
-            /* border: 1px solid black; */
+            border: 1px solid black; 
             border-radius: 10px;
             margin-top: 10px;
         }
 
+            form.charsheet main section.attacksandspellcasting > div.attributes label {
+                text-align: center;
+                padding: 2px;
+                font-size: 10px;
+                font-weight: bold;
+                font-family: 'MedeivalSharp';
+            }
+
             form.charsheet main section.attacksandspellcasting > div {
-                margin: 10px;
+                margin: 3px;
                 display: flex;
                 flex-direction: column;
+                font-family: math;
+                font-size: smaller;
+                margin-bottom: 0px;
             }
+                form.charsheet main section.attacksandspellcasting > div.profDescription {
+                    color: #d0696a;
+                }
 
                 form.charsheet main section.attacksandspellcasting > div > label {
                     order: 3;

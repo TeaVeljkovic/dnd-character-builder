@@ -12,5 +12,6 @@ namespace DnDCharacterBuilder.Application.Models
         public int ProficiencyChoiceCount { get; set; }
         public List<string> ClassSavingThrows { get; set; }
         public List<Guid> ClassSkillProficiencieBonus { get; set; }
+        public string HitDie { get; set; }
     }
 }

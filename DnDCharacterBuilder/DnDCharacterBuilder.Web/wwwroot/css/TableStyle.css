@@ -42,3 +42,31 @@
     .table .dnd-hitdie {
         color: #2E8B57; /* Sea Green */
     }
+
+.delete-button {
+    background-color: white;
+    border: solid 1px #6e3841;
+    color: #6e3841;
+    padding: 8px 12px;
+    image-size: 16px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+    color: floralwhite;
+}
+
+.view-button {
+    background-color: white;
+    border: solid 1px #6e3841;
+    color: #6e3841;
+    padding: 8px 12px;
+    image-size: 16px;
+    cursor: pointer;
+}
+
+.view-button:hover {
+    background-color: lightgray;
+    color: white;
+}

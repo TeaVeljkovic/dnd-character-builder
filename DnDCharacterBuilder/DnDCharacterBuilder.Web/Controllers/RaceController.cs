@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DnDCharacterBuilder.Application.Interfaces;
+using DnDCharacterBuilder.Application.Services;
 using DnDCharacterBuilder.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,6 +24,12 @@ namespace DnDCharacterBuilder.Web.Controllers
             var model = _mapper.Map<List<RaceViewModel>>(races);
 
             return View(model);
+        }
+
+        public IActionResult GetAttributesForRace(Guid raceId)
+        {
+            var attributesForRace = _raceService.GetRaceAttributesById(raceId);
+            return Json(attributesForRace);
         }
     }
 }

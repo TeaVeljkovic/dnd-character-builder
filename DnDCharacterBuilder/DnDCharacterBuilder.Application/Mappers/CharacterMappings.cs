@@ -20,9 +20,8 @@ namespace DnDCharacterBuilder.Application.Mappers
             CreateMap<CreateCharacterModel, Character>()
                 .ForMember(x => x.Alignment, y => y.MapFrom(x => EnumHelpers.MapAlignment(x.Alignment)))
                 .ForMember(x => x.Name, y => y.MapFrom(x => x.CharacterName))
-                //.ForMember(x => x.CharacterSkillProficiencies, y => y.MapFrom(x => x.SelectedSkills.Select(s => new CharacterSkillProficiency { SkillId = s }).ToList()))
-                .AfterMap(MapAbilities)
-                .AfterMap((src, dest) => dest.CharacterSkillProficiencies = src.SelectedSkills.Select(st => new CharacterSkillProficiency { SkillId = st }).ToList());    
+                .AfterMap(MapAbilities);
+                //.AfterMap((src, dest) => dest.CharacterSkillProficiencies = src.SelectedSkills.Select(st => new CharacterSkillProficiency { SkillId = st }).ToList());    
         }
         private void MapAbilities(CreateCharacterModel src, Character dest)
         {
@@ -32,6 +31,7 @@ namespace DnDCharacterBuilder.Application.Mappers
                 {
                     Ability = Common.Enums.Ability.Strength,
                     Value = src.Strength
+
                 },
                 new CharacterAbility
                 {
@@ -59,7 +59,6 @@ namespace DnDCharacterBuilder.Application.Mappers
                     Value = src.Charisma
                 }
             };
-
         }
     }
 }

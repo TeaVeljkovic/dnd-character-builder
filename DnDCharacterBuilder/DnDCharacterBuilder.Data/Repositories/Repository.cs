@@ -25,6 +25,7 @@ namespace DnDCharacterBuilder.Data.Repositories
         public void Delete(Guid id)
         {
             _dbSet.Remove(GetById(id));
+            _context.SaveChanges();
         }
 
         public List<T> GetAll()

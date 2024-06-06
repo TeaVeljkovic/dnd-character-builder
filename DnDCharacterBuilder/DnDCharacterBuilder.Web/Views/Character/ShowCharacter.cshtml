@@ -1,0 +1,235 @@
+﻿@model CharacterViewModel;
+@{
+    Layout = "_Layout";
+}
+
+<head>
+    <link href="~/css/CharacterFormStyle.css" rel="stylesheet" />
+</head>
+
+<form class="charsheet" method="get">
+<header>
+    <section class="charname">
+        <label for="CharacterName">Character Name</label><input name="CharacterName" disabled value="@Model.Name" />
+    </section>
+    <section class="misc">
+        <ul>
+            <li>
+                <label for="classlevel">Class</label>
+                <input disabled value="@Model.Class" />
+            </li>
+            <li>
+                <label for="background">Background</label>
+                <input disabled name="background" value="@Model.Background" />
+            </li>
+            <li>
+                <label for="race">Race</label>
+                <input disabled value="@Model.Race" />
+            </li>
+            <li>
+                <label for="alignment">Alignment</label>
+                <input disabled value="@Model.Alignment" />
+            </li>
+            <li>
+                <label for="ExpPoints">Experience Points</label>
+                <input disabled name="ExpPoints" value="@Model.ExpPoints" />
+            </li>
+        </ul>
+    </section>
+</header>
+<main>
+        <section>
+            <section class="attributes">
+                <div class="scores">
+                    <ul>
+                        <li>
+                            <div class="score">
+                                <label for="Strengthscore">Strength</label>
+                                <input data-atribute-control="STR" name="Strength" id="StrengthScore" disabled value="@Model.Strength" class="stat" />
+                            </div>
+                            <div class="modifier">
+                                <input data-ability="STR" name="Strengthmod" id="StrengthModifier" dissabled value="@Model.GetStringModifier(@Model.StrengthModifier)" class="statmod" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="score">
+                                <label for="Dexterityscore">Dexterity</label>
+                                <input data-atribute-control="DEX" name="Dexterity" id="DexterityScore" disabled value="@Model.Dexterity" class="stat" />
+                            </div>
+                            <div class="modifier">
+                                <input data-ability="DEX" name="Dexteritymod" id="DexterityModifier" dissabled value="@Model.GetStringModifier(@Model.DexterityModifier)" class="statmod" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="score">
+                                <label for="Constitutionscore">Constitution</label>
+                                <input data-atribute-control="CON" name="Constitution" id="ConstitutionScore" disabled value="@Model.Constitution" class="stat" />
+                            </div>
+                            <div class="modifier">
+                                <input data-ability="CON" name="Constitutionmod" id="ConstitutionModifier" dissabled value="@Model.GetStringModifier(@Model.ConstitutionModifier)" class="statmod" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="score">
+                                <label for="Wisdomscore">Wisdom</label>
+                                <input data-atribute-control="WIS" name="Wisdom" id="WisdomScore" disabled value="@Model.Wisdom" class="stat" />
+                            </div>
+                            <div class="modifier">
+                                <input data-ability="WIS" name="Wisdommod" id="WisdomModifier" dissabled value="@Model.GetStringModifier(@Model.WisdomModifier)" class="statmod" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="score">
+                                <label for="Intelligencescore">Intelligence</label>
+                                <input data-atribute-control="INT" name="Intelligence" id="IntelligenceScore" disabled value="@Model.Intelligence" class="stat" />
+                            </div>
+                            <div class="modifier">
+                                <input data-ability="INT" name="Intelligencemod" id="IntelligenceModifier" dissabled value="@Model.GetStringModifier(@Model.IntelligenceModifier)" class="statmod" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="score">
+                                <label for="Charismascore">Charisma</label>
+                                <input data-atribute-control="CHA" name="Charisma" id="CharismaScore" disabled value="@Model.Charisma" class="stat" />
+                            </div>
+                            <div class="modifier">
+                                <input data-ability="CHA" name="Charismamod" id="CharismaModifier" dissabled value="@Model.GetStringModifier(@Model.CharismaModifier)" class="statmod" />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="attr-applications">
+                    <div class="inspiration box">
+                        <div class="label-container">
+                            <label for="inspiration">Inspiration</label>
+                        </div>
+                        <input name="IsInspired" type="checkbox" />
+                    </div>
+                    <div class="passive-perception box">
+                        <div class="label-container">
+                            <label for="passiveperception">Passive Wisdom (Perception)</label>
+                        </div>
+                        <input name="PassivePerception" value="@Model.Wisdom" />
+                    </div>
+                    <div class="saves list-section box">
+                        <ul>
+                            <li>
+                                <label for="Strength-save">Strength</label>
+                                <input data-ability="STR" disabled name="Strength-save" id="StrengthSaveModifier" class="strength-mod" dissabled value="@Model.GetStringModifier(@Model.StrengthSavingThrowModifier)" type="text" />
+                                <input id="STR" name="save-prof" checked="@Model.StrengthProficiency" disabled type="checkbox" />
+                            </li>
+                            <li>
+                                <label for="Dexterity-save">Dexterity</label>
+                                <input data-ability="DEX" disabled name="Dexterity-save" id="DexteritySaveModifier" dissabled value="@Model.GetStringModifier(@Model.DexteritySavingThrowModifier)" type="text" />
+                                <input id="DEX" name="save-prof" checked="@Model.DexterityProficiency" disabled type="checkbox" />
+                            </li>
+                            <li>
+                                <label for="Constitution-save">Constitution</label>
+                                <input data-ability="CON" disabled name="Constitution-save" id="ConstitutionSaveModifier" dissabled value="@Model.GetStringModifier(@Model.ConstitutionSavingThrowModifier)" type="text" />
+                                <input id="CON" name="save-prof" checked="@Model.ConstitutionProficiency" disabled type="checkbox" />
+                            </li>
+                            <li>
+                                <label for="Wisdom-save">Wisdom</label>
+                                <input data-ability="WIS" disabled name="Wisdom-save" id="WisdomSaveModifier" dissabled value="@Model.GetStringModifier(@Model.WisdomSavingThrowModifier)" type="text" />
+                                <input id="WIS" disabled name="save-prof" checked="@Model.WisdomProficiency" type="checkbox" />
+                            </li>
+                            <li>
+                                <label for="Intelligence-save">Intelligence</label>
+                                <input data-ability="INT" disabled name="Intelligence-save" id="IntelligenceSaveModifier" dissabled value="@Model.GetStringModifier(@Model.IntelligenceSavingThrowModifier)" type="text" />
+                                <input id="INT" name="save-prof" disabled checked="@Model.IntelligenceProficiency" type="checkbox" />
+                            </li>
+                            <li>
+                                <label for="Charisma-save">Charisma</label>
+                                <input data-ability="CHA" disabled name="Charisma-save" id="CharismaSaveModifier" dissabled value="@Model.GetStringModifier(@Model.CharismaSavingThrowModifier)" type="text" />
+                                <input id="CHA" name="save-prof" checked="@Model.CharismaProficiency" disabled type="checkbox" />
+                            </li>
+                        </ul>
+                        <div class="label">
+                            Saving Throws
+                        </div>
+                    </div>
+                    <div class="skills list-section box">
+                        <ul>
+                            @foreach(var skill in Model.Skills)
+                            {
+                                <li>
+                                    <label for="@skill.Name">@skill.Name<span class="skill">(@skill.ShortenedAbility)</span></label>
+                                    <input value="@skill.Modifier" disabled type="text" data-ability="@skill.ShortenedAbility"/>
+                                    <input class="skillsCheckbox" name="SelectedSkills" type="checkbox" checked="@skill.IsProficient" />
+                                </li>
+                            }
+                        </ul>
+                        <div class="label">
+                            Skills
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section>
+            <section class="combat">
+                <div class="armorclass">
+                    <div>
+                        <label for="ac">Armor Class</label>
+                        <input name="ArmorClass" disabled value="@Model.ArmorClass" type="text" />
+                    </div>
+                </div>
+                <div class="speed">
+                    <div>
+                        <label for="speed">Speed</label>
+                        <input name="Speed" disabled value="@Model.Speed" type="text" />
+                    </div>
+                </div>
+                <div class="hp">
+                    <div class="regular">
+                        <div class="max">
+                            <label for="maxhp">Hit Point Maximum</label>
+                            <input name="HitPointsMax" disabled value="@Model.HitPointsMax" type="text" />
+                        </div>
+                        <div class="current">
+                            <label for="currenthp">Current Hit Points</label>
+                            <input name="CurrentHitPoints" disabled value="@Model.CurrentHitPoints" type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class="hitdice">
+                    <div>
+                        <div class="remaining">
+                            <label for="remaininghd">Hit Dice</label>
+                            <input name="remaininghd" disabled value="@Model.HitDIe" type="text" />
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            @* <section class="attacksandspellcasting">
+                <div id="proficiencyDescription"></div>
+            </section> *@
+            
+        </section>
+        <section>
+            <section class="flavor">
+                <div class="personality">
+                    <label for="PersonalityTraits">Personality</label><textarea disabled name="PersonalityTraits">@Model.PersonalityTraits</textarea>
+                </div>
+                <div class="ideals">
+                    <label for="ideals">Ideals</label><textarea disabled name="ideals">@Model.Ideals</textarea>
+                </div>
+                <div class="bonds">
+                    <label for="bonds">Bonds</label><textarea disabled name="bonds">@Model.Bonds</textarea>
+                </div>
+                <div class="flaws">
+                    <label for="flaws">Flaws</label><textarea disabled name="flaws">@Model.Flaws</textarea>
+                </div>
+            </section>
+            @* <section class="features">
+                <div class="submit-button">
+                    <button type="submit">Save</button>
+                </div>
+            </section> 
+ *@        </section>
+    </main>
+</form>
+
+<script src="~/js/ShowCharacter.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

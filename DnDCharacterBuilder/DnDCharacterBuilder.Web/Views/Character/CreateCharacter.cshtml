@@ -27,7 +27,7 @@
                 </li>
                 <li>
                     <label for="race">Race</label>
-                    <select asp-items="Model.RaceToSelect" asp-for="RaceId">
+                    <select id="selectedRace" asp-items="Model.RaceToSelect" asp-for="RaceId">
                         <option></option>
                     </select>
                 </li>
@@ -61,7 +61,7 @@
                                 <label for="Strengthscore">Strength</label><input data-atribute-control="STR" name="Strength" id="StrengthScore" placeholder="10" class="stat" />
                             </div>
                             <div class="modifier">
-                                <input data-ability="STR" name="Strengthmod" class="strength-mod" id="StrengthModifier" placeholder="+0" class="statmod" />
+                                <input data-ability="STR" name="Strengthmod" class="statmod" id="StrengthModifier" placeholder="+0" />
                             </div>
                         </li>
                         <li>
@@ -85,7 +85,7 @@
                                 <label for="Wisdomscore">Wisdom</label><input data-atribute-control="WIS" name="Wisdom" id="WisdomScore" placeholder="10" class="stat" />
                             </div>
                             <div class="modifier">
-                                <input data-ability="WIS" name="Wisdommod" id="WisdomModifier" placeholder="+0" />
+                                <input data-ability="WIS" name="Wisdommod" id="WisdomModifier" placeholder="+0" class="statmod" />
                             </div>
                         </li>
                         <li>
@@ -123,32 +123,32 @@
                         <ul>
                             <li>
                                 <label for="Strength-save">Strength</label>
-                                <input data-ability="STR" disabled name="Strength-save" id="StrengthSaveModifier" class="strength-mod" placeholder="+0" type="text" />
+                                <input data-ability="STR" disabled name="Strength-save" id="StrengthSaveModifier" class="modifier-value" placeholder="+0" type="text" />
                                 <input id="STR" name="save-prof" disabled type="checkbox" />
                             </li>
                             <li>
                                 <label for="Dexterity-save">Dexterity</label>
-                                <input data-ability="DEX" disabled name="Dexterity-save" id="DexteritySaveModifier" placeholder="+0" type="text" />
+                                <input data-ability="DEX" disabled name="Dexterity-save" id="DexteritySaveModifier" class="modifier-value" placeholder="+0" type="text" />
                                 <input id="DEX" name="save-prof" disabled type="checkbox" />
                             </li>
                             <li>
                                 <label for="Constitution-save">Constitution</label>
-                                <input data-ability="CON" disabled name="Constitution-save" id="ConstitutionSaveModifier" placeholder="+0" type="text" />
+                                <input data-ability="CON" disabled name="Constitution-save" id="ConstitutionSaveModifier" class="modifier-value" placeholder="+0" type="text" />
                                 <input id="CON" name="save-prof" disabled type="checkbox" />
                             </li>
                             <li>
                                 <label for="Wisdom-save">Wisdom</label>
-                                <input data-ability="WIS" disabled name="Wisdom-save" id="WisdomSaveModifier" placeholder="+0" type="text" />
+                                <input data-ability="WIS" disabled name="Wisdom-save" id="WisdomSaveModifier" class="modifier-value" placeholder="+0" type="text" />
                                 <input id="WIS" disabled name="save-prof" type="checkbox" />
                             </li>
                             <li>
                                 <label for="Intelligence-save">Intelligence</label>
-                                <input data-ability="INT" disabled name="Intelligence-save" id="IntelligenceSaveModifier" placeholder="+0" type="text" />
+                                <input data-ability="INT" disabled name="Intelligence-save" id="IntelligenceSaveModifier" class="modifier-value" placeholder="+0" type="text" />
                                 <input id="INT" name="save-prof" disabled type="checkbox" />
                             </li>
                             <li>
                                 <label for="Charisma-save">Charisma</label>
-                                <input data-ability="CHA" disabled name="Charisma-save" id="CharismaSaveModifier" placeholder="+0" type="text" />
+                                <input data-ability="CHA" disabled name="Charisma-save" id="CharismaSaveModifier" class="modifier-value" placeholder="+0" type="text" />
                                 <input id="CHA" name="save-prof" disabled type="checkbox" />
                             </li>
                         </ul>
@@ -162,8 +162,8 @@
                             {
                                 <li>
                                     <label for="@skill.Id">@skill.Name<span class="skill">(@skill.TruncatedName)</span></label>
-                                    <input placeholder="+0" disabled type="text" data-ability="@skill.TruncatedName"/>
-                                    <input id="@skill.Id" data-ability="@skill.TruncatedName" value="@skill.Id" class="skillsCheckbox" name="SelectedSkills" type="checkbox" />
+                                    <input placeholder="+0" disabled type="text" name="@skill.Name" class="skills-modifier" data-ability="@skill.TruncatedName"/>
+                                    <input id="@skill.Id" value="@skill.Id" data-checkbox-control="@skill.Name" class="skillsCheckbox" name="SelectedSkills" type="checkbox" />
                                 </li>
                             }
                         </ul>
@@ -183,7 +183,7 @@
                 </div>
                 <div class="speed">
                     <div>
-                        <label for="speed">Speed</label><input name="speed" placeholder="30" type="text" />
+                        <label for="speed">Speed</label><input name="Speed" id="speed" placeholder="30" type="text" />
                     </div>
                 </div>
                 <div class="hp">
@@ -206,7 +206,13 @@
 
             </section>
             <section class="attacksandspellcasting">
-                <div id="proficiencyDescription"></div>
+                <div id="proficiencyDescription" class="profDescription"></div>
+                <div id="sizeDescription"></div>
+                <div id="ageDescription"></div>
+                <div id="alignmentDescription"></div>
+                <div class="attributes">
+                    <label for="attributes">Attributes</label>
+                </div>
             </section>
             
         </section>

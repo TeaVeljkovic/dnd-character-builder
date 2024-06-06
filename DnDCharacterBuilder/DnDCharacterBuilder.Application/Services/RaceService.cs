@@ -5,6 +5,7 @@ using DnDCharacterBuilder.Common.Constants;
 using DnDCharacterBuilder.Common.Helpers;
 using DnDCharacterBuilder.Data.Interfaces;
 using DnDCharacterBuilder.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace DnDCharacterBuilder.Application.Services
@@ -19,12 +20,16 @@ namespace DnDCharacterBuilder.Application.Services
             _raceRepository=raceRepository;
             _mapper=mapper;
         }
-
         public IEnumerable<Race> GetAllRaces()
         {
             return _raceRepository.GetAll();
         }
-
+        public Race GetRaceById(Guid Id)
+        {
+            var races = _raceRepository.GetAsQueryable()
+                .Include(x => x.RaceAbilities);
+            return races.FirstOrDefault(x => x.Id == Id);
+        }
         public async Task SeedRaces()
         {
             if (_raceRepository.GetAll().Count != 0)
@@ -70,6 +75,22 @@ namespace DnDCharacterBuilder.Application.Services
             }
 
             _raceRepository.Add(raceToAdd);
+        }
+
+        public RaceSelection GetRaceAttributesById(Guid Id)
+        {
+            var race = GetRaceById(Id);
+
+            var selected = new RaceSelection
+            {
+                Speed = race.Speed,
+                AgeInfo = race.AgeInfo,
+                Size = race.Size,
+                SizeInfo = race.SizeInfo,
+                AlignmentInfo = race.AlignmentInfo
+            };
+
+            return selected;
         }
     }
 }

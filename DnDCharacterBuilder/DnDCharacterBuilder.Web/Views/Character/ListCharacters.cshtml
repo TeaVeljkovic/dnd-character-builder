@@ -4,11 +4,14 @@
 }
 
 <link href="~/css/TableStyle.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <table class="table">
     <thead>
         <tr>
             <th>Name</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -16,6 +19,16 @@
         {
             <tr>
                 <td>@character.Name</td>
+                <td>
+                    <a href="/Character/ShowCharacter/@character.Id">
+                        <button class="view-button"><i class="fa fa-eye"></i></button>
+                    </a>
+                </td>
+                <td>
+                    <a href="/Character/DeleteCharacter/@character.Id">
+                        <button class="delete-button"><i class="fa fa-trash"></i></button>
+                    </a>
+                </td>
             </tr>
         }
     </tbody>

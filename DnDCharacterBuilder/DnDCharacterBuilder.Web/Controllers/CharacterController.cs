@@ -106,9 +106,25 @@ namespace DnDCharacterBuilder.Web.Controllers
             var characterById = characters.Where(x => x.Id == id).FirstOrDefault();
 
             var model = _mapper.Map<CharacterViewModel>(characterById);
-            model.Skills = _skillService.GetAllSkills().ToList();
+            //model.Skills = _skillService.GetAllSkills().ToList();
 
             return View(model);
+        }
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> DeleteCharacter(Guid id)
+        {
+            var characters = _characterService.GetCharactersByUserId(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            var characterById = characters.Where(x => x.Id == id).FirstOrDefault();
+
+            if (characterById == null)
+            {
+                return NotFound($"Character with Id = {id} not found");
+            }
+
+            _characterService.DeleteCharacter(id);
+
+            return RedirectToAction("ListCharacters");
         }
     }
 }
